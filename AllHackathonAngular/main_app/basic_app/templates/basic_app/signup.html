@@ -1,0 +1,62 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+
+  <!-- <div id="features">
+    <div class="box">
+      <h2>Features</h2>
+      <div class="grid">
+        <div class="bg-shd" id="feat"><i class="far fa-comment-alt"></i>
+          <h3>Feature</h3>
+          <p>Some short descriptional text about one amazing feature</p><a href="#">More ></a>
+        </div>
+        <div class="bg-shd" id="feat"><i class="far fa-laugh"></i>
+          <h3>Another feature</h3>
+          <p>Some short descriptional text about one amazing feature</p><a href="#">More ></a>
+        </div>
+        <div class="bg-shd" id="feat"><i class="far fa-star"></i>
+          <h3>One more feature</h3>
+          <p>Some short descriptional text about one amazing feature</p><a href="#">More ></a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <form id="contact" action="{% url 'basic_app:create_user' %}" method="POST" enctype="multipart/form-data">
+          {%csrf_token%}
+          <h3>Welcome to NGO_NAME, Please Signup</h3>
+          <h4>Contact our customer support for any enquiries</h4>
+          <fieldset>
+            <input placeholder="Username" type="text" name="username" required id="id_username" tabindex="1" required autofocus>
+          </fieldset>
+          <fieldset>
+            <input placeholder="Your Email Address" type="email" name="email" required id="id_email" tabindex="2" required>
+          </fieldset>
+          <fieldset>
+            <input placeholder="Your Password" type="password" name="password" required id="id_password" tabindex="2" required>
+          </fieldset>
+          <fieldset>
+            <input placeholder="Your Profile Photo" type="file" name="profile_photo" required id="id_profile_photo" tabindex="2" required>
+          </fieldset>
+          <!-- <fieldset>
+            <input placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required>
+          </fieldset> -->
+          <!-- <fieldset>
+            <input placeholder="Your Web Site (optional)" type="url" tabindex="4" required>
+          </fieldset> -->
+          <!-- <fieldset>
+            <textarea placeholder="Type your message here...." tabindex="5" required></textarea>
+          </fieldset> -->
+          <fieldset>
+            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+          </fieldset>
+          <p class="copyright">Name of the NGO</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

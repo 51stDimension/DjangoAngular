@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <ul id="myTopnav" class="nav"><span id="logo"><a href="#" onclick="myFunction()"><i class="fa fa-ellipsis-h"></i></a></span>
+          <li><a href="#">Get Started</a></li>
+          <li><a href="#">Discover</a></li>
+          <li><a href="#">Manual</a></li>
+          <li><a href="#">Help</a></li>
+          {% if user.is_authenticated %}
+              <li><a href="#">Hello, {{user.username}}</a></li>
+              <li><a href="{% url "basic_app:logout" %}">Logout</a></li>
+          {% else %}
+              <li><a href="{% url "basic_app:create_user" %}">Sign Up</a></li>
+              <li><a href="{% url "basic_app:login" %}">Sign In</a></li>
+          {% endif %}
+        </ul>
+    </header>
+    <section id="banner">
+        <div class="box">
+          <h1>The Landing</h1>
+          <p>Fantastic inspirational text about some cool product</p>
+          <button>Get started</button>
+        </div>
+      </section>
+
+      {% block content %}
+
+      {% endblock %}
+
+      <section class="bg-shd" id="contacts">
+        <div class="box">
+          <h2>Subscribe</h2>
+          <form class="sub-form">
+            <label for="user">
+              <input id="user" type="text" placeholder="Name"/>
+            </label>
+            <label for="email">
+              <input id="email" type="email" placeholder="Email"/>
+            </label>
+            <button class="sm" type="submit">Submit</button>
+          </form>
+        </div>
+      </section>
+      <footer>
+        <div class="box">
+          <ul class="nav">
+            <li class="icon"><a href="#"><i class="fa fa-envelope"></i></a></li>
+            <li class="icon"><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li class="icon"><a href="#"><i class="fab fa-instagram"></i></a></li>
+            <li class="icon"><a href="#"><i class="fab fa-facebook"></i></a></li>
+          </ul>
+        </div>
+      </footer>
+<script>
+    function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "nav") {
+        x.className += " responsive";
+    } else {
+        x.className = "nav";
+    }
+    }
+</script>
+</body>
+</html>
